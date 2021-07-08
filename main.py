@@ -3,12 +3,13 @@ import numpy as np
 import sys
 
 # user options, see README.md for details on how to use
+toppercent = 0.3
+bottompercent = 0.7
 PERCENT_BLUE_FOR_PAUSED = 70
 video_name = "video.mp4"
 output_name = "output.mp4" # must end in mp4 unless you know how to change the fourcc code appropriately on line 27
 FRAME_SKIP_AFTER_PAUSE = 7
-toppercent = 0.3
-bottompercent = 0.7
+
 
 # progress bar for command line
 def progress(purpose, currentcount, maxcount, skipped):
