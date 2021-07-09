@@ -17,7 +17,7 @@ def progress(purpose, currentcount, maxcount, skipped):
     sys.stdout.write("{}: {} of {} ({:.1f}%), {} paused frames skipped ".format(purpose,currentcount, maxcount, (100/(maxcount-1)*currentcount), skipped))
     sys.stdout.flush()
 
-def main():
+def main(toppercent, bottompercent, PERCENT_BLUE_FOR_PAUSED, video_name, output_name, FRAME_SKIP_AFTER_PAUSE):
     # get input video data and set up variables for output video
     cap = cv2.VideoCapture(video_name)
     fps = cap.get(cv2.CAP_PROP_FPS)
@@ -77,4 +77,4 @@ def main():
 
 # good practice for Python
 if __name__ == "__main__":
-    main()
+    main(toppercent ,bottompercent, PERCENT_BLUE_FOR_PAUSED, video_name, output_name, FRAME_SKIP_AFTER_PAUSE)
