@@ -1,13 +1,14 @@
 # UnpauseFFRK
-Recordings of battles in Final Fantasy Record Keeper (mobile game) tend have lots of game pauses because the game requires quick reactions.
-These pauses can be detrimental when viewed, so I wrote a script to remove them from recordings using Python and OpenCV. 
+Recordings of battles in Final Fantasy Record Keeper (mobile game) tend have lots of pausing because the game requires quick reactions.
+These pauses can be an annoyance when watching the recording, so I wrote a script to remove them from recordings using Python and OpenCV. 
 
-Read the limitations below to see if it's right for you, and then read the instructions if you're undeterred. It will be helpful if you know Python and Git basics, but 
-I'll try to make it beginner friendly. 
+Read the limitations below to see if it's right for you, and then read the instructions if you're undeterred. If you're familiar with Git and Python, you can download the code and play around with
+`main.py` for customizability, but otherwise the website should be sufficient for you. 
 
 # Limitations:
-TLDR: Input mp4 file of just FFRK filling the video, output .mp4 with no audio, pause frames removed and some frames after pauses to remove stuttering.
-- It's difficult to extract the audio of each frame, so the output does not have audio. Leave a pull request if you have a way of doing this, maybe with FFMPEG.
+TLDR: Input mp4 file of just FFRK filling the video, outputs .mp4 with no audio. Pause frames are removed and some frames after pauses are also removed to help with stuttering.
+- Some animations in FFRK persist while the game is paused (e.g. Soul Breaks), so if you pause for long during those, there will be a noticeable jump.
+- It's difficult to extract the audio of particular frames, so the output does not have audio. Leave a pull request if you have a way of doing this, maybe with FFMPEG, or just add your own audio after.
 - This script removes frames where the percentage of blue pixels (pause menu) crosses a threshold, so it will only work if the recording is of just the FFRK screen.
 - The script removes the pause frames and then a certain number of frames after because the game lags a bit after unpausing, 
 and this number of frames could depend on your app/simulator's performance.
@@ -28,8 +29,8 @@ Download as a Zip archive and extract it to somewhere you'll remember.
 # Extra options
 This script works for me, but it could require tweaking for you to work. Here are all the options that you can conveniently change at the top of `main.py` with your favourite text editor.
 ## toppercent and bottompercent
-What portion of the screen is looked at while looking for pauses, I added these because the top and bottom of the screen are useless and needlessly increase processing time.
-Default are `0.3` and `0.7`, meaning the top and bottom 30% of the video are ignored, basically.
+What percentage of the screen is ignored while looking for pauses, I added these because the top and bottom of the screen are useless and needlessly increase processing time.
+Default are `30` and `30`, meaning the top and bottom 30% of the video are ignored.
 ## PERCENT_BLUE_FOR_PAUSED 
 What percentage of the screen should be blue for the screen to be considered paused, default `70`. It might help to decrease this value if the script is not working. 
 ## video_name
@@ -38,3 +39,10 @@ The name of the input video, default `video.mp4`
 The name of the ouput video, default `output.mp4`. The output should remain .mp4 unless you know what you are doing.
 ## FRAME_SKIP_AFTER_PAUSE
 The number of frames to skip after an unpause, to skip the intentional lag that unpausing creates. I manually figured out it was around 8-14 frames for me, so I set it to `7`.
+
+
+# Future features 
+I'm pretty busy but if enough people ask for these features I'll consider working on them. Even better, if you can make them happen I'll happily review and merge. 
+- Cropping on the horizontal sides, for videos that need that
+- An image viewer so you can choose the cropping percentages with the help of a visual
+- Audio
