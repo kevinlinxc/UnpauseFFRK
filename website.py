@@ -3,7 +3,13 @@ import streamlit as st
 import tempfile
 import os
 import cv2
-
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.write("# Welcome to UnpauseFFRK!")
 st.write("### This site is a frontend for the Python script that I've written on my [Github](https://github.com/kevinlinxc/UnpauseFFRK).")
 st.write('### You can use this site to remove paused frames from Final Fantasy Record Keeper gameplay videos, but be aware of the limitations '
