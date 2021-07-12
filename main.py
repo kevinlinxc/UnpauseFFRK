@@ -48,7 +48,7 @@ class UnpauseFFRK():
         textprogress = ''
         start = time.time()
         if website:
-            st.write(f"Processing... 30 FPS videos usually take their duration time to process (e.g.. 10 minute video takes 10 minutes to process. 60 FPS recordings will take longer).")
+            st.write(f"Processing...this usually takes around the video duration length to complete.")
             textprogress = st.empty()
             bar = st.progress(0)
         while cap.isOpened():
@@ -88,4 +88,4 @@ class UnpauseFFRK():
 
 # good practice for Python
 if __name__ == "__main__":
-    main(TOP_PERCENT, BOTTOM_PERCENT, PERCENT_BLUE_FOR_PAUSED, VIDEO_NAME, OUTPUT_NAME, FRAME_SKIP_AFTER_PAUSE)
+    UnpauseFFRK(TOP_PERCENT, BOTTOM_PERCENT, PERCENT_BLUE_FOR_PAUSED, VIDEO_NAME, OUTPUT_NAME, FRAME_SKIP_AFTER_PAUSE)
