@@ -39,7 +39,7 @@ class UnpauseFFRK():
         insize = (int (cap.get(cv2.CAP_PROP_FRAME_WIDTH)) ,int (cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
         topheight = int(toppercent/100 * insize[1])
         bottomheight = int((100-bottompercent)/100 * insize[1])
-        out = cv2.VideoWriter(output_name, cv2.VideoWriter_fourcc(*'avc1'), fps, insize) #mp4v
+        out = cv2.VideoWriter(output_name, cv2.VideoWriter_fourcc(*'avc1'), fps, insize) #mp4v h264
 
         counter = 0
         skippedcounter = 0
