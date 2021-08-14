@@ -53,7 +53,7 @@ class UnpauseFFRK:
         text_progress = ''
         start = time.time()
         if website:
-            st.write(f"Processing...this usually takes around the video duration length to complete.")
+            st.write(f"Processing...this can take a while, go take a shower or try to use Kite's shop.")
             text_progress = st.empty()
             bar = st.progress(0)
         while cap.isOpened():
