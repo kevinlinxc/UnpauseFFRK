@@ -2,7 +2,7 @@ import main
 import streamlit as st
 import tempfile
 import os
-import cv2
+
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -17,14 +17,12 @@ st.write('### You can use this site to remove paused frames from Final Fantasy R
 
 
 uploaded_file = st.file_uploader("Choose a file", type=['mp4', 'avi'])
-stframe = st.empty()
-
-
+st_frame = st.empty()
 
 if uploaded_file is not None:
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
-    output_name = os.path.join(tempfile.gettempdir(), "output.mp4")
+    output_name = os.path.join(tempfile.gettempdir(), main.OUTPUT_NAME)
     st.write("### Options (defaults work well for a recording of just the screen)")
     col1, col2 = st.beta_columns(2)
 
@@ -33,6 +31,7 @@ if uploaded_file is not None:
     frames_skip = col1.slider("Number of frames to skip after unpausing", 0, 20, 7, 1, help="The game is frozen for a few frames after unpausing. Removing some of these frames amkes the game output seem less stuttery.")
     percentage = col2.slider("% of screen that has to be blue for a frame to be considered paused", 0 , 100, 70, 1, help="If this was 0, all frames would be considered paused. Decrease if paused frames aren't being deleted. If you crop the top and bottom properly, the default should be fine. If your video is 1920x1080 with FFRK in the middle, lower this dramatically.")
     button = st.button("Start unpausing!")
+
     if button:
         unpauser = main.UnpauseFFRK(top_percent, bottom_percent, percentage, tfile.name, output_name, frames_skip, True)
         video_file = open(output_name, 'rb')
