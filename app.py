@@ -11,9 +11,9 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.write("# Welcome to UnpauseFFRK!")
-st.write("### This site is a frontend for the Python script that I've written on my [Github](https://github.com/kevinlinxc/UnpauseFFRK).")
-st.write('### You can use this site to remove paused frames from Final Fantasy Record Keeper gameplay videos, but be aware of the limitations '
-         'mentioned on Github.')
+st.write("### You can use this site to remove paused frames from Final Fantasy Record Keeper gameplay videos. The default"
+         "unpausing settings will work for .mp4 recordings of just the screen. Check out my [Github](https://github.com/kevinlinxc/UnpauseFFRK) "
+         "to run the script/website manually (faster upload and processing), to read about the limitations, or to report bugs.")
 
 
 uploaded_file = st.file_uploader("Choose a file", type=['mp4', 'avi'])
@@ -24,7 +24,7 @@ if uploaded_file is not None:
     tfile.write(uploaded_file.read())
     output_name = os.path.join(os.curdir, main.OUTPUT_NAME)
     st.write("### Options (defaults work well for a recording of just the screen)")
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
 
     top_percent = col1.slider("% of screen to cut from top while processing", 0, 49, 30, 1, help="Cutting parts of the screen that don't show the pause menu decreases processing time. This won't crop the output video.")
     bottom_percent = col2.slider("% of screen to cut from bottom while processing", 0, 49, 30, 1, help="Cutting parts of the screen that won't have the pause menu decreases processing time. This won't crop the output video.")

@@ -1,4 +1,4 @@
 numpy
 opencv-contrib-python-headless
-streamlit==0.84.0
+streamlit
 av
