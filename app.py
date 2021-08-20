@@ -22,7 +22,7 @@ st_frame = st.empty()
 if uploaded_file is not None:
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
-    output_name = os.path.join(tempfile.gettempdir(), main.OUTPUT_NAME)
+    output_name = os.path.join(os.curdir, main.OUTPUT_NAME)
     st.write("### Options (defaults work well for a recording of just the screen)")
     col1, col2 = st.beta_columns(2)
 
