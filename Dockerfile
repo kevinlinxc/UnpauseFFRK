@@ -1,10 +1,11 @@
-FROM python:3.6
+FROM python:3.9
 EXPOSE 8501
 WORKDIR /app
 COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
 COPY . .
-CMD ["sh", "-c", "streamlit run --server.port $PORT app.py"]
+#replace 8501 with $PORT if on heroku
+CMD ["sh", "-c", "streamlit run --server.port 8501 app.py"]
 
 # to run with Docker:
 # docker build -f Dockerfile -t app:latest .
