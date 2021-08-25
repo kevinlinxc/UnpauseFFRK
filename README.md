@@ -2,17 +2,20 @@
 Recordings of battles in Final Fantasy Record Keeper (mobile game) tend have lots of pausing because the game requires quick reactions.
 These pauses can be an annoyance when watching the recording, so I wrote a script to remove them from recordings using Python and OpenCV. 
 
-Read the limitations below to see if it's right for you, and then read the instructions if you're undeterred. If you're familiar with Git and Python, you can download the code and play around with
-`main.py` for customizability, but otherwise the website should be sufficient for you. 
+Ideally, this would be a website where you could upload your file and process it and get it back, but I've had 
+no luck getting the website I made hosted. You can read about my issues [here](https://discuss.streamlit.io/t/website-crashes-during-file-upload/16130/7) and [here](https://github.com/streamlit/streamlit/issues/3722).
+
+Currently, you need to know how to use the most basic Python features, like installing it, installing requirements,
+and using terminal commands. If that's okay, read the limitations below to see if it's right for you, and then read the instructions if you're undeterred.
 
 # Limitations:
 TLDR: Input mp4 file of just FFRK filling the video, outputs .mp4 with no audio. Pause frames are removed and some frames after pauses are also removed to help with stuttering.
 - Some animations in FFRK persist while the game is paused (e.g. Soul Breaks), so if you pause for long during those, there will be a noticeable jump.
 - It's difficult to extract the audio of particular frames, so the output does not have audio. Leave a pull request if you have a way of doing this, maybe with FFMPEG, or just add your own audio after.
-- This script removes frames where the percentage of blue pixels (pause menu) crosses a threshold, so it will only work if the recording is of just the FFRK screen.
+- This script removes frames where the percentage of blue pixels (pause menu) crosses a threshold, so it will work best if the recording is of just the FFRK screen. If it only fills x% of width, you'll want to reduce the percent blue parameter by that much.
 - The script removes the pause frames and then a certain number of frames after because the game lags a bit after unpausing, 
 and this number of frames could depend on your app/simulator's performance.
-- Only tested with mp4 as input, other inputs might work since I'm using OpenCV. Only outputs to mp4, only tested on Windows but according to [this](https://gist.github.com/takuma7/44f9ecb028ff00e2132e) this should work on Mac too.
+- Only tested with mp4 as input, other inputs might work, especially avi. Only outputs to mp4, only tested on Windows but according to [this](https://gist.github.com/takuma7/44f9ecb028ff00e2132e) this should work on Mac too.
 
 # Instructions
 1. Download any version of Python 3. I used Python 3.9, [here](https://realpython.com/installing-python/)'s a decent guide for installing Python.

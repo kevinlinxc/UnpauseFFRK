@@ -1,5 +1,9 @@
 [theme]
 base="dark"
 
+[global]
+developmentMode = false
+
 [server]
 maxUploadSize=4096
+port = 8501

@@ -1,4 +1,5 @@
-numpy
+numpy~=1.21.2
 opencv-contrib-python-headless
-streamlit
-av
+streamlit==0.87.0
+av~=8.0.3
+pyinstaller~=4.5.1
