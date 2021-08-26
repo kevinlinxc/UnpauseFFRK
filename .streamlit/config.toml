@@ -6,4 +6,4 @@ developmentMode = false
 
 [server]
 maxUploadSize=4096
-port = 8501
+port = 8080
